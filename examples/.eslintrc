@@ -8,6 +8,7 @@
   },
   "globals": {
     "neume": true,
-    "sc": true
+    "sc": true,
+    "_": true
   }
 }
