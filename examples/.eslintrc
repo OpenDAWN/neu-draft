@@ -4,7 +4,8 @@
   },
   "rules": {
     "new-cap": 0,
-    "strict": 0
+    "strict": 0,
+    "comma-dangle": 0
   },
   "globals": {
     "neume": true,
