@@ -14,7 +14,7 @@
   "private": true,
   "scripts": {
     "cover": "babel-node node_modules/.bin/isparta cover --report text --report html --report lcov node_modules/.bin/_mocha",
-    "lint": "eslint src test",
+    "lint": "eslint src test examples",
     "test": "mocha --require espower-babel/guess",
     "travis": "npm run lint && npm run test"
   }

@@ -1,0 +1,13 @@
+{
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "new-cap": 0,
+    "strict": 0
+  },
+  "globals": {
+    "neume": true,
+    "sc": true
+  }
+}
