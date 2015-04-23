@@ -1,0 +1,21 @@
+{
+  "name": "neu-draft",
+  "description": "draft for neume.js",
+  "version": "0.0.0",
+  "devDependencies": {
+    "babel": "^5.1.11",
+    "babel-eslint": "^3.0.1",
+    "eslint": "^0.19.0",
+    "espower-babel": "^2.1.0",
+    "isparta": "^3.0.3",
+    "mocha": "^2.2.4",
+    "power-assert": "^0.11.0"
+  },
+  "private": true,
+  "scripts": {
+    "cover": "babel-node node_modules/.bin/isparta cover --report text --report html --report lcov node_modules/.bin/_mocha",
+    "lint": "eslint src test",
+    "test": "mocha --require espower-babel/guess",
+    "travis": "npm run lint && npm run test"
+  }
+}
