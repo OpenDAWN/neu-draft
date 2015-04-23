@@ -1,7 +1,8 @@
 "use strict";
 
 export default class EventEmitter {
-  constructor() {
+  constructor(context) {
+    this.context = context;
     this._callbacks  = {};
   }
 
@@ -27,7 +28,7 @@ export default class EventEmitter {
 
   once(type, callback) {
     if (typeof callback === "function") {
-      let fn = function(data) {
+      let fn = (data) => {
         this.off(type, fn);
         callback.call(this, data);
       };
@@ -56,9 +57,11 @@ export default class EventEmitter {
     return this;
   }
 
-  emit(type, data = null) {
-    this.listeners(type).forEach((fn) => {
-      fn.call(this, data);
+  emit(type, e) {
+    this.context.sched(e.playbackTime, () => {
+      this.listeners(type).forEach((fn) => {
+        fn(e);
+      });
     });
   }
 }
