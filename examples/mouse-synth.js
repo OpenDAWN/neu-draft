@@ -22,6 +22,6 @@ var synth = neu.Synth(MouseSynth, mouseX, mouseY).start(neu.currentTime);
 
 neu.Stream.fromEventHandler(window, "mousedown").on("data", function(e) {
   synth.fadeOut(e.playbackTime, 1).on("stop", function(e) {
-    console.log("stop!")
+    console.log("stop!", e.playbackTime);
   });
 });

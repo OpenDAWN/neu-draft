@@ -9,6 +9,6 @@ function SimpleSynth(frequency) {
 
 neu.Stream.fromEventHandler(document.getElementById("button"), "click").on("data", function(e) {
   neu.Synth(SimpleSynth, 880).start(e.playbackTime).on("stop", function(e) {
-    console.log("stop!");
+    console.log("stop!", e.playbackTime);
   });
 });

@@ -14,7 +14,7 @@ function CoinSynth() {
 }
 
 neu.Stream("#button", "click").on("data", function(e) {
-  neu.Synth(CoinSynth).start(e.playbackTime).on("stop", function() {
-    console.log("stop!");
+  neu.Synth(CoinSynth).start(e.playbackTime).on("stop", function(e) {
+    console.log("stop!", e.playbackTime);
   });
 });
