@@ -11,6 +11,15 @@ describe("util", function() {
     });
   });
 
+  describe("respondTo", function() {
+    it("(object: any, methodName: function): boolean", function() {
+      assert(util.respondTo({}, "toString") === true);
+      assert(util.respondTo({}, "toNumber") === false);
+      assert(util.respondTo(0, "toString") === true);
+      assert(util.respondTo(null, "toString") === false);
+    });
+  });
+
   describe("extend", function() {
     it("(a: object, b: object): object", function() {
       assert.deepEqual(util.extend({ a: 10, b: 20 }, { b: 40, c: 50 }), {
