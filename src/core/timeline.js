@@ -1,5 +1,3 @@
-"use strict";
-
 import * as util from "../util";
 
 export default class Timeline {

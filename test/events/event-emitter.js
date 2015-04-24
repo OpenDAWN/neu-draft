@@ -1,5 +1,3 @@
-"use strict";
-
 import "web-audio-test-api";
 import assert from "power-assert";
 import EventEmitter from "../../src/events/event-emitter";

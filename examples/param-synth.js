@@ -2,9 +2,9 @@ var neu = neume();
 var synth = null;
 
 function ParamSynth(defaultFrequency) {
-  return neu.Sum([
-    neu.Sine({ frequency: neu.Param("frequency", defaultFrequency) }),
-    neu.Sine({ frequency: neu.Param("frequency", defaultFrequency).mul(1.05) })
+  return neu.sum([
+    neu.sine({ frequency: neu.param("frequency", defaultFrequency) }),
+    neu.sine({ frequency: neu.param("frequency", defaultFrequency).mul(1.05) }),
   ]).mul(0.25);
 }
 
@@ -16,7 +16,7 @@ document.getElementById("start", function() {
   if (synth) {
     synth.fadeOut(neu.currentTime, 2.5);
   }
-  synth = neu.Synth(ParamSynth, randomFrequency()).start(neu.currentTime).on("stop", function(e) {
+  synth = neu.synth(ParamSynth, randomFrequency()).start(neu.currentTime).on("stop", function(e) {
     console.log("stop!", e.playbackTime);
   });
 });

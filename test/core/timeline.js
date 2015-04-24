@@ -1,5 +1,3 @@
-"use strict";
-
 import "web-audio-test-api";
 import assert from "power-assert";
 import tickable from "tickable-timer";
@@ -65,14 +63,14 @@ describe("Timeline", function() {
   describe("#start", function() {
     it("(): self", function() {
       let timeline = new Timeline(audioContext, {
-        timerAPI: tickable
+        timerAPI: tickable,
       });
 
       assert(timeline.start() === timeline);
     });
     it("(callback: function): self", function() {
       let timeline = new Timeline(audioContext, {
-        timerAPI: tickable
+        timerAPI: tickable,
       });
 
       let callback = () => {};
@@ -85,7 +83,7 @@ describe("Timeline", function() {
   describe("#stop", function() {
     it("(): self", function() {
       let timeline = new Timeline(audioContext, {
-        timerAPI: tickable
+        timerAPI: tickable,
       });
 
       timeline.insert(1, () => {});
@@ -95,7 +93,7 @@ describe("Timeline", function() {
     });
     it("(reset: boolean)", function() {
       let timeline = new Timeline(audioContext, {
-        timerAPI: tickable
+        timerAPI: tickable,
       });
 
       timeline.insert(1, () => {});
@@ -178,7 +176,7 @@ describe("Timeline", function() {
         interval: 0.025,
         aheadTime: 0.1,
         offsetTime: 0.005,
-        timerAPI: tickable
+        timerAPI: tickable,
       });
     });
 
@@ -202,7 +200,7 @@ describe("Timeline", function() {
       timeline.audioContext.$process(0.025);
 
       assert.deepEqual(passed, [
-        [   0, 0.000 + 0.005 ],
+        [ 0, 0.000 + 0.005 ],
       ]);
 
       assert(timeline.events.length === 4); // 100, 125, 150, 175
