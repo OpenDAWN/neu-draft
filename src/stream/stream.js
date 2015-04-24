@@ -4,16 +4,9 @@ export default class Stream {
   constructor(context) {
     this.readable = true;
     this.writable = true;
+
     this._writer = new Writable(context);
     this._reader = this._writer.reader;
-  }
-
-  pause() {
-    return this._reader.pause();
-  }
-
-  resume() {
-    return this._reader.resume();
   }
 
   write(object) {
