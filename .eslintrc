@@ -25,6 +25,7 @@
     "no-shadow": 0,
 
     // style
+    "comma-spacing": 0,
     "no-underscore-dangle": 0,
     "quotes": [ 2, "double", "avoid-escape" ]
   }
