@@ -1,18 +1,4 @@
 {
-  "parser": "babel-eslint",
-  "env": {
-    "node": true
-  },
-  "rules": {
-    "quotes": [ 1, "double", "avoid-escape" ],
-    "comma-style": [ 2, "last" ],
-    "comma-dangle": 0,
-    "no-multi-spaces": 0,
-    "no-underscore-dangle": 0,
-    "no-shadow": 0,
-    "space-infix-ops": 0,
-    "yoda": 0
-  },
   "globals": {
     "describe"  : true,
     "context"   : true,
