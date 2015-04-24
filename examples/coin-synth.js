@@ -13,7 +13,7 @@ function CoinSynth($) {
     }));
 }
 
-neu.stream.fromEventHandler("#button", "click").on("data", function(e) {
+neu.stream.fromEventHandler(document.getElementById("button"), "click").on("data", function(e) {
   neu.synth(CoinSynth).start(e.playbackTime).on("stop", function(e) {
     console.log("stop!", e.playbackTime);
   });

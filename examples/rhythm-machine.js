@@ -40,7 +40,7 @@ function toggle() {
   };
 }
 
-neu.stream.fromEventHandler("#start", "click").on("data", toggle(function(e) {
+neu.stream.fromEventHandler(document.getElementById("start"), "click").on("data", toggle(function(e) {
   var master = neu.synth(Master).start(e.playbackTime);
   var metro = neu.sched.metro("8n").start(e.playbackTime);
   var counter = metro.map(function(data) {
