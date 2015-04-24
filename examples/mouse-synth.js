@@ -1,14 +1,14 @@
 var neu = neume();
 
-function MouseSynth(x, y) {
+function MouseSynth($, x, y) {
   var frequency = x.map(function(data) {
     return sc.linexp(data, 0, 1, 22, 3520);
   });
   var q = y.map(function(data) {
     return sc.linexp(data, 0, 1, 0.5, 25);
   });
-  return neu.sawtooth({ frequency: frequency })
-    .pipe(neu.lowpassFilter({ frequency: frequency, Q: q }));
+  return $("sawtooth", { frequency: frequency })
+    .pipe($("lowpass-filter", { frequency: frequency, Q: q }));
 }
 
 var mousemove = neu.stream.fromEventHandler(window, "mousemove");

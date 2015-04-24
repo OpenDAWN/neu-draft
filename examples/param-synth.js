@@ -1,10 +1,10 @@
 var neu = neume();
 var synth = null;
 
-function ParamSynth(defaultFrequency) {
-  return neu.sum([
-    neu.sine({ frequency: neu.param("frequency", defaultFrequency) }),
-    neu.sine({ frequency: neu.param("frequency", defaultFrequency).mul(1.05) }),
+function ParamSynth($, defaultFrequency) {
+  return $("sum", [
+    $("sine", { frequency: neu.param("frequency", defaultFrequency) }),
+    $("sine", { frequency: neu.param("frequency", defaultFrequency).mul(1.05) }),
   ]).mul(0.25);
 }
 

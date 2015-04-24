@@ -1,14 +1,14 @@
 var neu = neume();
 
-function CoinSynth() {
+function CoinSynth($) {
   var frequency = neu.iterator.fromArray([ 987.8, 1318.5 ]);
 
   neu.setTimeout(function(e) {
     frequency.next(e.playbackTime);
   }, 0.5);
 
-  return neu.sine({ frequency: frequency })
-    .pipe(neu.xline({ start: 0.5, end: 1e-6, duration: 1 }).on("end", function(e) {
+  return $("sine", { frequency: frequency })
+    .pipe($("xline", { start: 0.5, end: 1e-6, duration: 1 }).on("end", function(e) {
       e.synth.stop(e.playbackTime);
     }));
 }

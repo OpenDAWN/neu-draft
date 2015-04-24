@@ -1,8 +1,8 @@
 var neu = neume();
 
-function SimpleSynth(frequency) {
-  return neu.sine({ frequency: frequency })
-    .pipe(neu.xline({ start: 0.5, end: 1e-6, duration: 1 }).on("end", function(e) {
+function SimpleSynth($, frequency) {
+  return $("sine", { frequency: frequency })
+    .pipe($("xline", { start: 0.5, end: 1e-6, duration: 1 }).on("end", function(e) {
       e.synth.stop(e.playbackTime);
     }));
 }
