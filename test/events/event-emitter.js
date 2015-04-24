@@ -75,7 +75,28 @@ describe("EventEmitter", function() {
     });
   });
 
-  describe("#off", function() {
+
+  describe("#addListener", function() {
+    it("(type: string, callback: function): self", function() {
+      let passed = [];
+
+      emitter.addListener("bang", function(data) {
+        passed.push("!", data);
+      });
+      emitter.addListener("bang", function(data) {
+        passed.push("?", data);
+      });
+      emitter.addListener("ding", "ding");
+
+      emitter.emit("bang", 1);
+      emitter.emit("ding", 2);
+      emitter.emit("bang", 3);
+
+      assert.deepEqual(passed, [ "!", 1, "?", 1, "!", 3, "?", 3 ]);
+    });
+  });
+
+  describe("#removeListener", function() {
     it("(type: string, callback: function): self", function() {
       let passed = [];
 
@@ -89,8 +110,8 @@ describe("EventEmitter", function() {
         passed.push("?", data);
       });
 
-      emitter.off("bang", bang);
-      // emitter.off("ding", bang);
+      emitter.removeListener("bang", bang);
+      // emitter.removeListener("ding", bang);
 
       emitter.emit("bang", 1);
       emitter.emit("ding", 2);
@@ -111,8 +132,8 @@ describe("EventEmitter", function() {
         passed.push("?", data);
       });
 
-      emitter.off("bang", bang);
-      emitter.off("ding", bang);
+      emitter.removeListener("bang", bang);
+      emitter.removeListener("ding", bang);
 
       emitter.emit("bang", 1);
       emitter.emit("ding", 2);
@@ -131,8 +152,8 @@ describe("EventEmitter", function() {
         passed.push("?", data);
       });
 
-      emitter.off("bang");
-      emitter.off("ding");
+      emitter.removeListener("bang");
+      emitter.removeListener("ding");
 
       emitter.emit("bang", 1);
       emitter.emit("ding", 2);
@@ -140,6 +161,9 @@ describe("EventEmitter", function() {
 
       assert.deepEqual(passed, []);
     });
+  });
+
+  describe("#removeAllListeners", function() {
     it("(): self", function() {
       let passed = [];
 
@@ -151,7 +175,7 @@ describe("EventEmitter", function() {
         passed.push("?", data);
       });
 
-      emitter.off();
+      emitter.removeAllListeners();
 
       emitter.emit("bang", 1);
       emitter.emit("ding", 2);

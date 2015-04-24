@@ -26,7 +26,7 @@ export default class EventEmitter {
   once(type, callback) {
     if (typeof callback === "function") {
       let fn = (data) => {
-        this.off(type, fn);
+        this.removeListener(type, fn);
         callback.call(this, data);
       };
 
@@ -38,11 +38,13 @@ export default class EventEmitter {
     return this;
   }
 
-  off(type, callback) {
+  addListener(type, callback) {
+    return this.on(type, callback);
+  }
+
+  removeListener(type, callback) {
     if (typeof callback === "undefined") {
-      if (typeof type === "undefined") {
-        this._callbacks = {};
-      } else if (this.hasListeners(type)) {
+      if (this.hasListeners(type)) {
         delete this._callbacks[type];
       }
     } else if (this.hasListeners(type)) {
@@ -51,6 +53,13 @@ export default class EventEmitter {
       });
     }
 
+    return this;
+  }
+
+  removeAllListeners(type) {
+    if (typeof type === "undefined") {
+      this._callbacks = {};
+    }
     return this;
   }
 
