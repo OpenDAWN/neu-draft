@@ -1,8 +1,7 @@
-import "web-audio-test-api";
 import assert from "power-assert";
 import EventEmitter from "../../src/events/event-emitter";
 
-describe("EventEmitter", function() {
+describe("events/EventEmitter", function() {
   let emitter;
 
   beforeEach(function() {
@@ -141,6 +140,9 @@ describe("EventEmitter", function() {
 
       assert.deepEqual(passed, [ "?", 1 ]);
     });
+  });
+
+  describe("#removeAllListeners", function() {
     it("(type: string): self", function() {
       let passed = [];
 
@@ -152,8 +154,8 @@ describe("EventEmitter", function() {
         passed.push("?", data);
       });
 
-      emitter.removeListener("bang");
-      emitter.removeListener("ding");
+      emitter.removeAllListeners("bang");
+      emitter.removeAllListeners("ding");
 
       emitter.emit("bang", 1);
       emitter.emit("ding", 2);
@@ -161,9 +163,6 @@ describe("EventEmitter", function() {
 
       assert.deepEqual(passed, []);
     });
-  });
-
-  describe("#removeAllListeners", function() {
     it("(): self", function() {
       let passed = [];
 

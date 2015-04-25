@@ -43,11 +43,7 @@ export default class EventEmitter {
   }
 
   removeListener(type, callback) {
-    if (typeof callback === "undefined") {
-      if (this.hasListeners(type)) {
-        delete this._callbacks[type];
-      }
-    } else if (this.hasListeners(type)) {
+    if (typeof callback === "function" && this.hasListeners(type)) {
       this._callbacks[type] = this._callbacks[type].filter((fn) => {
         return !(fn === callback || fn.callback === callback);
       });
@@ -59,7 +55,10 @@ export default class EventEmitter {
   removeAllListeners(type) {
     if (typeof type === "undefined") {
       this._callbacks = {};
+    } else if (this.hasListeners(type)) {
+      delete this._callbacks[type];
     }
+
     return this;
   }
 
