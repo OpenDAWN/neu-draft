@@ -1,4 +1,4 @@
-export default class EventEmitter {
+export default class Emitter {
   constructor() {
     this._callbacks  = {};
   }

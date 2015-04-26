@@ -1,16 +1,16 @@
 import assert from "power-assert";
-import EventEmitter from "../../src/events/event-emitter";
+import Emitter from "../../src/events/emitter";
 
-describe("events/EventEmitter", function() {
+describe("events/Emitter", function() {
   let emitter;
 
   beforeEach(function() {
-    emitter = new EventEmitter();
+    emitter = new Emitter();
   });
 
   describe("constructor", function() {
     it("()", function() {
-      assert(emitter instanceof EventEmitter);
+      assert(emitter instanceof Emitter);
     });
   });
 
